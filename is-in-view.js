@@ -32,6 +32,7 @@ class Watcher {
           element.classList.add('has-been-partially-in-view');
         } else {
           if (!element.classList.contains('is-partially-in-view')) return;
+           if (typeof settings.callback === 'function') settings.callback(element);
           element.classList.remove('is-partially-in-view');
         }
       }
@@ -48,6 +49,7 @@ class Watcher {
         element.classList.add('has-been-fully-in-view');
       } else {
         if (!element.classList.contains('is-in-view')) return;
+         if (typeof settings.callback === 'function') settings.callback(element);
         element.classList.remove('is-in-view');
       }
     });
