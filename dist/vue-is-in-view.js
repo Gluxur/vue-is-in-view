@@ -115,25 +115,29 @@ var Watcher = function () {
 
         if (settings.showIfPartial) {
           if (elementTopPosition >= 0 && elementTopPosition <= _this.windowHeight || elementBottomPosition >= 0 && elementBottomPosition <= _this.windowHeight) {
-            if (typeof settings.callback === 'function') settings.callback(element);
+          
             element.classList.add('is-partially-in-view');
             element.classList.add('has-been-partially-in-view');
+              if (typeof settings.callback === 'function') settings.callback(element);
           } else {
             if (!element.classList.contains('is-partially-in-view')) return;
-            if (typeof settings.callback === 'function') settings.callback(element);
+           
             element.classList.remove('is-partially-in-view');
+             if (typeof settings.callback === 'function') settings.callback(element);
           }
         }
 
         if (elementBottomPosition <= _this.windowHeight && elementTopPosition <= _this.windowHeight && elementBottomPosition >= 0 && elementTopPosition >= 0) {
           if (element.classList.contains('is-in-view')) return;
-          if (typeof settings.callback === 'function') settings.callback(element);
+        
           element.classList.add('is-in-view');
           element.classList.add('has-been-fully-in-view');
+            if (typeof settings.callback === 'function') settings.callback(element);
         } else {
           if (!element.classList.contains('is-in-view')) return;
-          if (typeof settings.callback === 'function') settings.callback(element);
+        
           element.classList.remove('is-in-view');
+            if (typeof settings.callback === 'function') settings.callback(element);
         }
       });
     }
